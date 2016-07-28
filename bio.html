@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css"  media="screen,projection"/>
+      <link rel="stylesheet" href="css/custom.css" >
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <script type="text/javascript">
+      // enable the visual refresh
+google.maps.visualRefresh = true;
+
+var map;
+function initialize() {
+var mapOptions = {
+  zoom: 15,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+};
+map = new google.maps.Map(document.getElementById('map-canvas'),
+    mapOptions);
+  // try HTML5 geolocation
+if(navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var pos = new google.maps.LatLng(position.coords.latitude,
+                                     position.coords.longitude);
+
+    var infowindow = new google.maps.InfoWindow({
+      map: map,
+      position: pos,
+      content: 'Location found using HTML5.'
+    });
+
+        map.setCenter(pos);
+      }, function() {
+        handleNoGeolocation(true);
+      });
+    } else {
+      // browser doesn't support geolocation
+      handleNoGeolocation(false);
+    }
+    }
+
+    function handleNoGeolocation(errorFlag) {
+    if (errorFlag) {
+      var content = 'Error: The Geolocation service failed.';
+    } else {
+      var content = 'Error: Your browser doesn\'t support geolocation.';
+    }
+
+    var options = {
+      map: map,
+      position: new google.maps.LatLng(60, 105),
+      content: content
+    };
+
+    var infowindow = new google.maps.InfoWindow(options);
+    map.setCenter(options.position);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+      </script>
+
+    </head>
+
+    <body class="grey lighten-4">
+      <nav class="grey lighten-5" role="navigation">
+        <a id="logo-container" href="#" class="brand-logo">Volver</a>
+          <div class="nav-wrapper container text-center"><a href="index.html"><img src="img/logo.png" class="logo" alt="Logo" width="160px" /></a>
+
+          </div>
+        </nav>
+        <div class="section no-pad-bot">
+          <div class="container">
+            <div class="row">
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://scontent.fgig1-4.fna.fbcdn.net/v/t1.0-0/p235x165/13139159_1564817980515364_8268032198663436120_n.jpg?oh=0b0ce6ca3a69ec491b332666c0c406fc&oe=582FF109">
+              <span class="card-title">Jorge Ojeda</span>
+            </div>
+            <div class="card-content">
+              <h5>Jorge Ojeda</h5>
+              <h6>@jdojeda</h6>
+              <ul>
+                <li>Founder <strong>Akaray Valley</strong></li>
+                <li>Embajador <strong>#700</strong></li>
+                <li>Country Manager <strong>WAZE PY</strong></li>
+                <li>Evangelist <strong>Prototyping</strong></li>
+                <li>Diseñador de Ecosistemas <strong>Starups</strong></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+          </div>
+        </div>
+
+
+
+
+
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+      <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
+</body>
+  </html>

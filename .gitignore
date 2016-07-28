@@ -1,3 +1,5 @@
 #Ignores
 \.DS_Store
 \.bower_components
+#Ignorar el contenido de la carpeta web
+bower_components/
